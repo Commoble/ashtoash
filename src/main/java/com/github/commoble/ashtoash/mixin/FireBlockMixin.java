@@ -21,7 +21,8 @@ public class FireBlockMixin
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/world/World;clearBlockState(Lnet/minecraft/util/math/BlockPos;Z)Z"),
-		cancellable = true)
+		cancellable = true,
+		require = 0)
 	public void onTrySpreadingFireCallsClearBlockState(World world, BlockPos pos, int spreadFactor, Random rand, int currentAge, CallbackInfo info)
 	{
 		Callbacks.onTrySpreadingFireCallsClearBlockStateCallback(world, pos, spreadFactor, rand, currentAge, info);
