@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "ashtoash",
+  "version": "${version}",
+
+  "name": "Ash to Ash",
+  "description": "Burning things burns things to ash",
+  "authors": [
+    "Commoble!"
+  ],
+  "contact": {
+    "homepage": "N/A",
+    "sources": "N/A"
+  },
+
+  "license": "MIT",
+  "icon": "assets/ashtoash/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.commoble.ashtoash.AshToAshMod"
+    ]
+  },
+  "mixins": [
+    "ashtoash.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*",
+    "minecraft": "1.14.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
