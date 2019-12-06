@@ -15,7 +15,7 @@ public class Callbacks
 	public static void onTrySpreadingFireCallsClearBlockStateCallback(World world, BlockPos pos, int spreadFactor, Random rand, int currentAge, CallbackInfo info)
 	{
 		BlockState state = world.getBlockState(pos);
-		if (BlockTags.getContainer().get(AshToAshMod.ashablesTagRL).contains(state.getBlock()))
+		if (BlockTags.getContainer().get(Identifiers.ASHABLES).contains(state.getBlock()))
 		{
 			if (state.isFullOpaque(world, pos))
 			{
