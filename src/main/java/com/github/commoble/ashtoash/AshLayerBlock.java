@@ -133,12 +133,12 @@ public class AshLayerBlock extends Block
 	}
 
 	@Override
-	public void onScheduledTick(BlockState state, World world, BlockPos pos, Random random)
+	public void onRandomTick(BlockState state, World world, BlockPos pos, Random random)
 	{
 		if (!world.isClient && this.canAshBlowAway(state, world, pos))
 		{
 			int layers = state.get(LAYERS);
-			if (layers > 0)
+			if (layers > 1)
 			{
 				world.setBlockState(pos, state.with(LAYERS, layers-1));
 			}
@@ -152,15 +152,15 @@ public class AshLayerBlock extends Block
 	// ash slowly blows away if:
 		// ash is outdoors, and
 		// ash is NATURAL, and
-		// ash is not smallest layer level (including lower layers), and
+		// ash is not smallest layer level (including lower layers), and	// if smallest layer, reduced chance of dissipating
 		// ash is not a full block with more ash above
 	public boolean canAshBlowAway(BlockState state, World world, BlockPos pos)
 	{
 		return state.getProperties().contains(NATURAL)
 			&& state.get(NATURAL)
-			&& !this.isSmallestAshLayer(state, world, pos)
-			&& !world.isAir(pos.up())
-			&& world.isSkyVisible(pos);
+			&& (!this.isSmallestAshLayer(state, world, pos) || world.random.nextInt(4) == 0)
+			&& world.isAir(pos.up())
+			&& world.isSkyVisible(pos.up());
 	}
 	
 	
